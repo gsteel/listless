@@ -46,6 +46,6 @@ repository:
   has_pages: false
   has_projects: false
   has_wiki: false
-  name: "php-template-project"
+  name: "listless"
   private: false
   topics: "php, template, goats"

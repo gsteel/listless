@@ -1,9 +1,9 @@
 {
-    "name": "gsteel/php-template-project",
+    "name": "gsteel/listless",
     "type": "library",
-    "description": "Template Project Name",
+    "description": "Common mailing list contracts",
     "keywords": [],
-    "homepage": "https://github.com/gsteel/php-template-project",
+    "homepage": "https://github.com/gsteel/listless",
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +12,9 @@
         }
     ],
     "require": {
-        "php": "^7.3 || ~8.0"
+        "php": "^7.3 || ~8.0",
+        "symfony/polyfill-php80": "^1.23",
+        "webmozart/assert": "^1.10"
     },
     "require-dev": {
         "doctrine/coding-standard": "^9.0",
@@ -34,13 +36,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Gsteel\\Package\\": "src/"
+            "GSteel\\Listless\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Gsteel\\Package\\Test\\Unit\\": "test/Unit",
-            "Gsteel\\Package\\Test\\Integration\\": "test/Integration"
+            "GSteel\\Listless\\Test\\": "test",
+            "GSteel\\Listless\\Test\\Unit\\": "test/Unit",
+            "GSteel\\Listless\\Test\\Integration\\": "test/Integration"
         }
     },
     "scripts": {
@@ -52,7 +55,7 @@
         ],
         "clean": [
             "composer normalize",
-            "psalm --generate-baseline",
+            "psalm --update-baseline",
             "phpcbf"
         ]
     }
