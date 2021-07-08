@@ -15,7 +15,7 @@ class SubscriberInformationTest extends TestCase
      * @test
      * @psalm-suppress InvalidArgument
      */
-    public function nonScalarValuesShouldBeExceptional(): void
+    public function nonScalarValuesInTheConstructorShouldBeExceptional(): void
     {
         $this->expectException(InvalidArgument::class);
         SubscriberInformation::fromArray([new stdClass()]);
@@ -35,5 +35,42 @@ class SubscriberInformationTest extends TestCase
         $info = SubscriberInformation::fromArray($input);
 
         self::assertEquals($input, $info->toArray());
+    }
+
+    /** @test */
+    public function itShouldBePossibleForSubscriberInformationToBeEmpty(): void
+    {
+        self::assertEquals([], SubscriberInformation::fromArray([])->toArray());
+    }
+
+    /** @test */
+    public function notExistentKeysShouldBeNull(): void
+    {
+        $params = SubscriberInformation::fromArray([]);
+        self::assertNull($params->get('key'));
+    }
+
+    /** @test */
+    public function valuesGivenToTheConstructorCanBeRetrievedByName(): void
+    {
+        self::assertEquals('bar', SubscriberInformation::fromArray(['foo' => 'bar'])->get('foo'));
+    }
+
+    public function testThatAValueCanBeSet(): void
+    {
+        $params = SubscriberInformation::fromArray([]);
+        $clone = $params->set('key', 'value');
+        self::assertNotSame($params, $clone);
+        self::assertEquals('value', $clone->get('key'));
+    }
+
+    /**
+     * @test
+     * @psalm-suppress InvalidArgument,UnusedMethodCall
+     */
+    public function nonScalarValuesInSetShouldBeExceptional(): void
+    {
+        $this->expectException(InvalidArgument::class);
+        SubscriberInformation::fromArray([])->set('foo', null);
     }
 }

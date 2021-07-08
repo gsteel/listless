@@ -23,7 +23,11 @@ final class SubscriberInformation implements SubscriberMeta
         $this->data = $data;
     }
 
-    /** @param array<array-key, scalar|scalar[]> $data */
+    /**
+     * @param array<array-key, scalar|scalar[]> $data
+     *
+     * @psalm-mutation-free
+     */
     public static function fromArray(array $data): self
     {
         self::validateArray($data);
@@ -39,6 +43,8 @@ final class SubscriberInformation implements SubscriberMeta
 
     /**
      * @param mixed|array<array-key, mixed> $value
+     *
+     * @psalm-mutation-free
      */
     private static function validateArray($value): void
     {
@@ -52,5 +58,20 @@ final class SubscriberInformation implements SubscriberMeta
         }
 
         Assert::scalar($value);
+    }
+
+    /** @inheritDoc */
+    public function get(string $key)
+    {
+        return $this->data[$key] ?? null;
+    }
+
+    /** @inheritDoc */
+    public function set(string $key, $value): SubscriberMeta
+    {
+        $input = $this->data;
+        $input[$key] = $value;
+
+        return self::fromArray($input);
     }
 }
