@@ -74,4 +74,9 @@ final class SubscriberInformation implements SubscriberMeta
 
         return self::fromArray($input);
     }
+
+    public function has(string $key): bool
+    {
+        return isset($this->data[$key]);
+    }
 }

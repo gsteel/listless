@@ -20,4 +20,6 @@ interface SubscriberInformation
      * @psalm-mutation-free
      */
     public function set(string $key, $value): self;
+
+    public function has(string $key): bool;
 }

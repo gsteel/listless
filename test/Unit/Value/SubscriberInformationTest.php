@@ -9,6 +9,8 @@ use GSteel\Listless\Value\SubscriberInformation;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+use function array_keys;
+
 class SubscriberInformationTest extends TestCase
 {
     /**
@@ -72,5 +74,35 @@ class SubscriberInformationTest extends TestCase
     {
         $this->expectException(InvalidArgument::class);
         SubscriberInformation::fromArray([])->set('foo', null);
+    }
+
+    /** @test */
+    public function hasWillReturnTrueForAnyValidValueThatHasBeenSet(): void
+    {
+        $input = [
+            'a' => 'a',
+            'b' => '',
+            'c' => 0.0,
+            'd' => 0,
+            'e' => false,
+            'f' => true,
+            'g' => 1,
+            'h' => 2.3,
+            'i' => [],
+            'j' => ['foo'],
+            'k' => ['a' => 'b'],
+        ];
+        $params = SubscriberInformation::fromArray($input);
+
+        foreach (array_keys($input) as $key) {
+            self::assertTrue($params->has($key));
+        }
+    }
+
+    public function testHasWillReturnFalseForAnUnknownKey(): void
+    {
+        self::assertFalse(
+            SubscriberInformation::fromArray([])->has('foo')
+        );
     }
 }
