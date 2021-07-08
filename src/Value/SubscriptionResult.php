@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Value;
 
-use GSteel\Listless\SubscriptionRequest;
 use GSteel\Listless\SubscriptionResult as Result;
 
+/**
+ * @psalm-immutable
+ */
 final class SubscriptionResult implements Result
 {
     private const SUCCESS_CODE = self::SUBMITTED | self::SUBSCRIBED;
@@ -14,30 +16,21 @@ final class SubscriptionResult implements Result
 
     /** @var int */
     private $code;
-    /** @var SubscriptionRequest */
-    private $request;
 
     private function __construct(
-        int $resultCode,
-        SubscriptionRequest $request
+        int $resultCode
     ) {
         $this->code = $resultCode;
-        $this->request = $request;
     }
 
-    public static function subscribed(SubscriptionRequest $request): self
+    public static function subscribed(): self
     {
-        return new self(self::SUBSCRIBED, $request);
+        return new self(self::SUBSCRIBED);
     }
 
-    public static function duplicate(SubscriptionRequest $request): self
+    public static function duplicate(): self
     {
-        return new self(self::DUPLICATE, $request);
-    }
-
-    public function request(): SubscriptionRequest
-    {
-        return $this->request;
+        return new self(self::DUPLICATE);
     }
 
     public function isSuccess(): bool

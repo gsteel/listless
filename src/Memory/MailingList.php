@@ -9,7 +9,7 @@ use GSteel\Listless\Assert;
 use GSteel\Listless\EmailAddress;
 use GSteel\Listless\ListId;
 use GSteel\Listless\MailingList as MailingListContract;
-use GSteel\Listless\SubscriptionRequest;
+use GSteel\Listless\SubscriberInformation;
 use GSteel\Listless\SubscriptionResult as ResultContract;
 use GSteel\Listless\Value\SubscriptionResult;
 
@@ -35,21 +35,24 @@ final class MailingList implements MailingListContract, Subscribe
         return $this->id;
     }
 
-    public function subscribe(SubscriptionRequest $request): ResultContract
-    {
+    public function subscribe(
+        EmailAddress $address,
+        ListId $listId,
+        ?SubscriberInformation $subscriberInformation = null
+    ): ResultContract {
         Assert::true(
-            $request->listId()->isEqualTo($this->listId()),
+            $listId->isEqualTo($this->listId()),
             'Mailing list identifier mismatch'
         );
 
-        if ($this->isSubscribed($request->emailAddress())) {
-            return SubscriptionResult::duplicate($request);
+        if ($this->isSubscribed($address)) {
+            return SubscriptionResult::duplicate();
         }
 
-        $key = strtolower($request->emailAddress()->toString());
-        $this->members[$key] = $request->emailAddress();
+        $key = strtolower($address->toString());
+        $this->members[$key] = $address;
 
-        return SubscriptionResult::subscribed($request);
+        return SubscriptionResult::subscribed();
     }
 
     public function isSubscribed(EmailAddress $address): bool

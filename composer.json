@@ -17,6 +17,7 @@
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
+        "captainhook/captainhook": "^5.10",
         "doctrine/coding-standard": "^9.0",
         "ergebnis/composer-normalize": "^2.15",
         "infection/infection": "^0.18.2",

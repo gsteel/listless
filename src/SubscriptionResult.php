@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace GSteel\Listless;
 
+/**
+ * @psalm-immutable
+ */
 interface SubscriptionResult
 {
     public const SUBSCRIBED = 0b00001;
@@ -13,7 +16,7 @@ interface SubscriptionResult
     public const ERROR      = 0b10000;
 
     /**
-     * The submitted request
+     * Whether the outcome of the process is considered successful or not
      */
-    public function request(): SubscriptionRequest;
+    public function isSuccess(): bool;
 }

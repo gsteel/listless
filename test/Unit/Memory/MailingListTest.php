@@ -9,11 +9,7 @@ use GSteel\Listless\Memory\MailingList;
 use GSteel\Listless\Test\Stub\CaseSensitiveEmail;
 use GSteel\Listless\Value\EmailAddress;
 use GSteel\Listless\Value\ListId;
-use GSteel\Listless\Value\SubscriptionRequest;
-use GSteel\Listless\Value\SubscriptionResult;
 use PHPUnit\Framework\TestCase;
-
-use function assert;
 
 class MailingListTest extends TestCase
 {
@@ -37,10 +33,10 @@ class MailingListTest extends TestCase
     public function testListIdMismatchInSubscribe(): void
     {
         $this->expectException(InvalidArgument::class);
-        $this->list->subscribe(SubscriptionRequest::new(
+        $this->list->subscribe(
             EmailAddress::fromString('me@example.com'),
             ListId::fromString('foo')
-        ));
+        );
     }
 
     public function testSomeoneIsNotSubscribed(): void
@@ -53,37 +49,30 @@ class MailingListTest extends TestCase
     public function testNewSubscriberIsSuccess(): void
     {
         $result = $this->list->subscribe(
-            SubscriptionRequest::new(
-                EmailAddress::fromString('me@example.com'),
-                $this->id
-            )
+            EmailAddress::fromString('me@example.com'),
+            $this->id
         );
-        assert($result instanceof SubscriptionResult);
+
         self::assertTrue($result->isSuccess());
     }
 
     public function testNewSubscriberIsSubscribed(): void
     {
-        $result = $this->list->subscribe(
-            SubscriptionRequest::new(
-                EmailAddress::fromString('me@example.com'),
-                $this->id
-            )
+        $address = EmailAddress::fromString('me@example.com');
+        $this->list->subscribe(
+            $address,
+            $this->id
         );
-        self::assertTrue($this->list->isSubscribed($result->request()->emailAddress()));
+
+        self::assertTrue($this->list->isSubscribed($address));
     }
 
     public function testSubscribingTwiceIsDuplicate(): void
     {
-        $request = SubscriptionRequest::new(
-            EmailAddress::fromString('me@example.com'),
-            $this->id
-        );
+        $address = EmailAddress::fromString('me@example.com');
 
-        $first = $this->list->subscribe($request);
-        $duplicate = $this->list->subscribe($request);
-        assert($first instanceof SubscriptionResult);
-        assert($duplicate instanceof SubscriptionResult);
+        $first = $this->list->subscribe($address, $this->id);
+        $duplicate = $this->list->subscribe($address, $this->id);
 
         self::assertTrue($first->isSuccess());
         self::assertFalse($duplicate->isSuccess());
@@ -91,13 +80,15 @@ class MailingListTest extends TestCase
 
     public function testSubscriptionStatusIgnoresCase(): void
     {
-        $email = new CaseSensitiveEmail('mE@ExamplE.COM');
-        $this->list->subscribe(SubscriptionRequest::new(
-            $email,
-            $this->id
-        ));
+        $mixedCaseEmail = new CaseSensitiveEmail('mE@ExamplE.COM');
+        $lowerCaseEmail = EmailAddress::fromString('me@example.com');
 
-        self::assertTrue($this->list->isSubscribed(EmailAddress::fromString('me@example.com')));
-        self::assertTrue($this->list->isSubscribed($email));
+        $this->list->subscribe(
+            $mixedCaseEmail,
+            $this->id
+        );
+
+        self::assertTrue($this->list->isSubscribed($lowerCaseEmail));
+        self::assertTrue($this->list->isSubscribed($mixedCaseEmail));
     }
 }
