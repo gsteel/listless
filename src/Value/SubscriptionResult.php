@@ -11,7 +11,7 @@ use GSteel\Listless\SubscriptionResult as Result;
  */
 final class SubscriptionResult implements Result
 {
-    private const SUCCESS_CODE = self::SUBMITTED | self::SUBSCRIBED;
+    private const SUCCESS_CODE = self::SUBMITTED | self::SUBSCRIBED | self::PENDING;
     private const FAILURE_CODE = self::DUPLICATE | self::ERROR | self::DUPLICATE;
 
     /** @var int */
@@ -26,6 +26,11 @@ final class SubscriptionResult implements Result
     public static function subscribed(): self
     {
         return new self(self::SUBSCRIBED);
+    }
+
+    public static function pending(): self
+    {
+        return new self(self::PENDING);
     }
 
     public static function duplicate(): self

@@ -18,4 +18,9 @@ class SubscriptionResultTest extends TestCase
     {
         self::assertFalse(SubscriptionResult::duplicate()->isSuccess());
     }
+
+    public function testThatAPendingResultIsDeemedSuccessful(): void
+    {
+        self::assertTrue(SubscriptionResult::pending()->isSuccess());
+    }
 }
