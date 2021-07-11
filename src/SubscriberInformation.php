@@ -22,4 +22,9 @@ interface SubscriberInformation
     public function set(string $key, $value): self;
 
     public function has(string $key): bool;
+
+    /**
+     * @return array<string, scalar|scalar[]>
+     */
+    public function getArrayCopy(): array;
 }

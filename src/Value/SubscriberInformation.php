@@ -7,6 +7,7 @@ namespace GSteel\Listless\Value;
 use GSteel\Listless\Assert;
 use GSteel\Listless\SubscriberInformation as SubscriberMeta;
 
+use function array_keys;
 use function is_iterable;
 
 /**
@@ -14,29 +15,30 @@ use function is_iterable;
  */
 final class SubscriberInformation implements SubscriberMeta
 {
-    /** @var array<array-key, scalar|scalar[]> */
+    /** @var array<string, scalar|scalar[]> */
     private $data;
 
-    /** @param array<array-key, scalar|scalar[]> $data */
+    /** @param array<string, scalar|scalar[]> $data */
     private function __construct(array $data)
     {
         $this->data = $data;
     }
 
     /**
-     * @param array<array-key, scalar|scalar[]> $data
+     * @param array<string, scalar|scalar[]> $data
      *
      * @psalm-mutation-free
      */
     public static function fromArray(array $data): self
     {
+        Assert::allString(array_keys($data));
         self::validateArray($data);
 
         return new self($data);
     }
 
-    /** @return array<array-key, scalar|scalar[]> */
-    public function toArray(): array
+    /** @inheritDoc */
+    public function getArrayCopy(): array
     {
         return $this->data;
     }

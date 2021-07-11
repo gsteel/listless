@@ -36,13 +36,13 @@ class SubscriberInformationTest extends TestCase
 
         $info = SubscriberInformation::fromArray($input);
 
-        self::assertEquals($input, $info->toArray());
+        self::assertEquals($input, $info->getArrayCopy());
     }
 
     /** @test */
     public function itShouldBePossibleForSubscriberInformationToBeEmpty(): void
     {
-        self::assertEquals([], SubscriberInformation::fromArray([])->toArray());
+        self::assertEquals([], SubscriberInformation::fromArray([])->getArrayCopy());
     }
 
     /** @test */
@@ -104,5 +104,23 @@ class SubscriberInformationTest extends TestCase
         self::assertFalse(
             SubscriberInformation::fromArray([])->has('foo')
         );
+    }
+
+    /**
+     * @test
+     * @psalm-suppress InvalidScalarArgument
+     */
+    public function itShouldBeExceptionalToProvideAnArrayWithoutStringsForTopLevelItems(): void
+    {
+        $this->expectException(InvalidArgument::class);
+        SubscriberInformation::fromArray(['foo', 'bar']);
+    }
+
+    /** @test */
+    public function nestedArraysWithIntegerKeysShouldBeAcceptable(): void
+    {
+        $input = ['foo' => ['foo', 'bar']];
+        $info = SubscriberInformation::fromArray($input);
+        self::assertEquals($input, $info->getArrayCopy());
     }
 }
