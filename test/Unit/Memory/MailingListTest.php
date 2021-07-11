@@ -42,7 +42,8 @@ class MailingListTest extends TestCase
     public function testSomeoneIsNotSubscribed(): void
     {
         self::assertFalse($this->list->isSubscribed(
-            EmailAddress::fromString('me@example.com')
+            EmailAddress::fromString('me@example.com'),
+            $this->id
         ));
     }
 
@@ -64,7 +65,7 @@ class MailingListTest extends TestCase
             $this->id
         );
 
-        self::assertTrue($this->list->isSubscribed($address));
+        self::assertTrue($this->list->isSubscribed($address, $this->id));
     }
 
     public function testSubscribingTwiceIsDuplicate(): void
@@ -88,7 +89,34 @@ class MailingListTest extends TestCase
             $this->id
         );
 
-        self::assertTrue($this->list->isSubscribed($lowerCaseEmail));
-        self::assertTrue($this->list->isSubscribed($mixedCaseEmail));
+        self::assertTrue($this->list->isSubscribed($lowerCaseEmail, $this->id));
+        self::assertTrue($this->list->isSubscribed($mixedCaseEmail, $this->id));
+    }
+
+    public function testThatUnsubscribingSomeoneWhoIsNotSubscribedIsANoOp(): void
+    {
+        $email = EmailAddress::fromString('foo@example.com');
+        self::assertFalse($this->list->isSubscribed($email, $this->id));
+        $this->list->unsubscribe($email, $this->id);
+        self::assertFalse($this->list->isSubscribed($email, $this->id));
+    }
+
+    public function testThatUnsubscribingSomeoneWhoIsSubscribedRemovesThemFromTheList(): void
+    {
+        $email = EmailAddress::fromString('foo@example.com');
+        $this->list->subscribe($email, $this->id);
+        self::assertTrue($this->list->isSubscribed($email, $this->id));
+        $this->list->unsubscribe($email, $this->id);
+        self::assertFalse($this->list->isSubscribed($email, $this->id));
+    }
+
+    public function testUsersAreUnsubscribedEvenWhenTheAddressIsNotLowercase(): void
+    {
+        $email1 = EmailAddress::fromString('foo@example.com');
+        $email2 = new CaseSensitiveEmail('Foo@eXamplE.com');
+        $this->list->subscribe($email1, $this->id);
+        self::assertTrue($this->list->isSubscribed($email1, $this->id));
+        $this->list->unsubscribe($email2, $this->id);
+        self::assertFalse($this->list->isSubscribed($email1, $this->id));
     }
 }

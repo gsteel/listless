@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Memory;
 
+use GSteel\Listless\Action\IsSubscribed;
 use GSteel\Listless\Action\Subscribe;
+use GSteel\Listless\Action\Unsubscribe;
 use GSteel\Listless\Assert;
 use GSteel\Listless\EmailAddress;
 use GSteel\Listless\ListId;
@@ -16,7 +18,7 @@ use GSteel\Listless\Value\SubscriptionResult;
 use function array_key_exists;
 use function strtolower;
 
-final class MailingList implements MailingListContract, Subscribe
+final class MailingList implements MailingListContract, Subscribe, IsSubscribed, Unsubscribe
 {
     /** @var ListId */
     private $id;
@@ -45,7 +47,7 @@ final class MailingList implements MailingListContract, Subscribe
             'Mailing list identifier mismatch'
         );
 
-        if ($this->isSubscribed($address)) {
+        if ($this->isSubscribed($address, $listId)) {
             return SubscriptionResult::duplicate();
         }
 
@@ -55,11 +57,20 @@ final class MailingList implements MailingListContract, Subscribe
         return SubscriptionResult::subscribed();
     }
 
-    public function isSubscribed(EmailAddress $address): bool
+    public function isSubscribed(EmailAddress $address, ListId $listId): bool
     {
         return array_key_exists(
             strtolower($address->toString()),
             $this->members
         );
+    }
+
+    public function unsubscribe(EmailAddress $address, ListId $fromList): void
+    {
+        if (! $this->isSubscribed($address, $fromList)) {
+            return;
+        }
+
+        unset($this->members[strtolower($address->toString())]);
     }
 }
