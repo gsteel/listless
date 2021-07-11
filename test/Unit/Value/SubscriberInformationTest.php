@@ -69,11 +69,12 @@ class SubscriberInformationTest extends TestCase
     /**
      * @test
      * @psalm-suppress InvalidArgument,UnusedMethodCall
+     * @noinspection   PhpParamsInspection
      */
     public function nonScalarValuesInSetShouldBeExceptional(): void
     {
         $this->expectException(InvalidArgument::class);
-        SubscriberInformation::fromArray([])->set('foo', null);
+        SubscriberInformation::fromArray([])->set('foo', new stdClass());
     }
 
     /** @test */
@@ -120,6 +121,14 @@ class SubscriberInformationTest extends TestCase
     public function nestedArraysWithIntegerKeysShouldBeAcceptable(): void
     {
         $input = ['foo' => ['foo', 'bar']];
+        $info = SubscriberInformation::fromArray($input);
+        self::assertEquals($input, $info->getArrayCopy());
+    }
+
+    /** @test */
+    public function itShouldBePossibleToProvideNullValuesWithInputArrays(): void
+    {
+        $input = ['foo' => ['foo' => null, 'bar' => null], 'baz' => null];
         $info = SubscriberInformation::fromArray($input);
         self::assertEquals($input, $info->getArrayCopy());
     }

@@ -15,17 +15,17 @@ use function is_iterable;
  */
 final class SubscriberInformation implements SubscriberMeta
 {
-    /** @var array<string, scalar|scalar[]> */
+    /** @var array<string, scalar|scalar[]|null[]|null> */
     private $data;
 
-    /** @param array<string, scalar|scalar[]> $data */
+    /** @param array<string, scalar|scalar[]|null[]|null> $data */
     private function __construct(array $data)
     {
         $this->data = $data;
     }
 
     /**
-     * @param array<string, scalar|scalar[]> $data
+     * @param array<string, scalar|scalar[]|null[]|null> $data
      *
      * @psalm-mutation-free
      */
@@ -59,7 +59,7 @@ final class SubscriberInformation implements SubscriberMeta
             return;
         }
 
-        Assert::scalar($value);
+        Assert::nullOrScalar($value);
     }
 
     /** @inheritDoc */
