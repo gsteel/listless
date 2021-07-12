@@ -18,6 +18,9 @@ use GSteel\Listless\Value\SubscriptionResult;
 use function array_key_exists;
 use function strtolower;
 
+/**
+ * @internal
+ */
 final class MailingList implements MailingListContract, Subscribe, IsSubscribed, Unsubscribe
 {
     /** @var ListId */
