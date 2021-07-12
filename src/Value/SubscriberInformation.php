@@ -15,17 +15,17 @@ use function is_iterable;
  */
 final class SubscriberInformation implements SubscriberMeta
 {
-    /** @var array<string, scalar|scalar[]|null[]|null> */
+    /** @var array<string, mixed|null> */
     private $data;
 
-    /** @param array<string, scalar|scalar[]|null[]|null> $data */
+    /** @param array<string, mixed|null> $data */
     private function __construct(array $data)
     {
         $this->data = $data;
     }
 
     /**
-     * @param array<string, scalar|scalar[]|null[]|null> $data
+     * @param array<string, mixed|null> $data
      *
      * @psalm-mutation-free
      */
@@ -44,14 +44,14 @@ final class SubscriberInformation implements SubscriberMeta
     }
 
     /**
-     * @param mixed|array<array-key, mixed> $value
+     * @param mixed|null $value
      *
      * @psalm-mutation-free
      */
     private static function validateArray($value): void
     {
         if (is_iterable($value)) {
-            /** @var mixed $subValue */
+            /** @psalm-var mixed $subValue */
             foreach ($value as $subValue) {
                 self::validateArray($subValue);
             }
@@ -72,6 +72,7 @@ final class SubscriberInformation implements SubscriberMeta
     public function set(string $key, $value): SubscriberMeta
     {
         $input = $this->data;
+        /** @psalm-suppress MixedAssignment */
         $input[$key] = $value;
 
         return self::fromArray($input);

@@ -15,7 +15,7 @@ class SubscriberInformationTest extends TestCase
 {
     /**
      * @test
-     * @psalm-suppress InvalidArgument
+     * @psalm-suppress InvalidScalarArgument
      */
     public function nonScalarValuesInTheConstructorShouldBeExceptional(): void
     {
@@ -68,8 +68,7 @@ class SubscriberInformationTest extends TestCase
 
     /**
      * @test
-     * @psalm-suppress InvalidArgument,UnusedMethodCall
-     * @noinspection   PhpParamsInspection
+     * @psalm-suppress UnusedMethodCall
      */
     public function nonScalarValuesInSetShouldBeExceptional(): void
     {

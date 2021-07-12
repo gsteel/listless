@@ -10,21 +10,28 @@ namespace GSteel\Listless;
 interface SubscriberInformation
 {
     /**
-     * @return mixed
+     * @return mixed|null
+     *
+     * @psalm-mutation-free
      */
     public function get(string $key);
 
     /**
-     * @param scalar|array<array-key, scalar|null> $value
+     * @param mixed|null $value
      *
      * @psalm-mutation-free
      */
     public function set(string $key, $value): self;
 
+    /**
+     * @psalm-mutation-free
+     */
     public function has(string $key): bool;
 
     /**
-     * @return array<string, scalar|scalar[]|null[]|null>
+     * @return array<string, mixed|null>
+     *
+     * @psalm-mutation-free
      */
     public function getArrayCopy(): array;
 }
