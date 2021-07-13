@@ -14,7 +14,7 @@ use function array_flip;
 final class ParameterMapper implements ParameterMapping
 {
     /** @var array<string, string> */
-    private $map;
+    private array $map;
 
     /**
      * @param array<string, string> $map

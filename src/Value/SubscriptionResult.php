@@ -14,8 +14,7 @@ final class SubscriptionResult implements Result
     private const SUCCESS_CODE = self::SUBMITTED | self::SUBSCRIBED | self::PENDING;
     private const FAILURE_CODE = self::DUPLICATE | self::ERROR | self::DUPLICATE;
 
-    /** @var int */
-    private $code;
+    private int $code;
 
     private function __construct(
         int $resultCode

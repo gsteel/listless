@@ -13,10 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 class MailingListTest extends TestCase
 {
-    /** @var ListId */
-    private $id;
-    /** @var MailingList */
-    private $list;
+    private ListId $id;
+    private MailingList $list;
 
     protected function setUp(): void
     {

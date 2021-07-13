@@ -12,8 +12,7 @@ use GSteel\Listless\ListId as ListIdContract;
  */
 final class ListId implements ListIdContract
 {
-    /** @var string */
-    private $id;
+    private string $id;
 
     private function __construct(string $id)
     {

@@ -14,10 +14,8 @@ use function strtolower;
  */
 final class EmailAddress implements EmailAddressContract
 {
-    /** @var string */
-    private $email;
-    /** @var string|null */
-    private $name;
+    private string $email;
+    private ?string $name;
 
     private function __construct(
         string $email,

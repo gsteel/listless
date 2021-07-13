@@ -23,16 +23,16 @@ use function strtolower;
  */
 final class MailingList implements MailingListContract, Subscribe, IsSubscribed, Unsubscribe
 {
-    /** @var ListId */
-    private $id;
+    private ListId $id;
 
     /** @var array<string, EmailAddress> */
-    private $members = [];
+    private array $members;
 
     public function __construct(
         ListId $id
     ) {
         $this->id = $id;
+        $this->members = [];
     }
 
     public function listId(): ListId

@@ -16,7 +16,7 @@ use function is_iterable;
 final class SubscriberInformation implements SubscriberMeta
 {
     /** @var array<string, mixed|null> */
-    private $data;
+    private array $data;
 
     /** @param array<string, mixed|null> $data */
     private function __construct(array $data)
