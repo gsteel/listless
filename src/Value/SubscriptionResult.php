@@ -38,8 +38,33 @@ final class SubscriptionResult implements Result
         return new self(self::DUPLICATE);
     }
 
+    public static function submitted(): self
+    {
+        return new self(self::SUBMITTED);
+    }
+
+    public static function rejected(): self
+    {
+        return new self(self::REJECTED);
+    }
+
+    public static function error(): self
+    {
+        return new self(self::ERROR);
+    }
+
     public function isSuccess(): bool
     {
         return ($this->code & self::SUCCESS_CODE) === $this->code;
+    }
+
+    public function equals(Result $other): bool
+    {
+        return $this->resultCode() === $other->resultCode();
+    }
+
+    public function resultCode(): int
+    {
+        return $this->code;
     }
 }

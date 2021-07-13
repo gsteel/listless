@@ -43,4 +43,14 @@ interface SubscriptionResult
      * Whether the outcome of the process is considered successful or not
      */
     public function isSuccess(): bool;
+
+    /**
+     * Compare two results for equality
+     */
+    public function equals(self $other): bool;
+
+    /**
+     * Retrieve the result code as an integer
+     */
+    public function resultCode(): int;
 }

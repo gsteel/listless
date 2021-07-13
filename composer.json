@@ -20,7 +20,7 @@
         "captainhook/captainhook": "^5.10",
         "doctrine/coding-standard": "^9.0",
         "ergebnis/composer-normalize": "^2.15",
-        "infection/infection": "^0.18.2",
+        "infection/infection": "^0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16.1",
         "roave/security-advisories": "dev-latest",
