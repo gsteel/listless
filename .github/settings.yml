@@ -38,7 +38,7 @@ repository:
   archived: false
   default_branch: "main"
   delete_branch_on_merge: true
-  description: "A template repository for PHP projects or libraries"
+  description: "Interfaces and value objects relating to mailing lists for listless developers"
   enable_automated_security_fixes: true
   enable_vulnerability_alerts: true
   has_downloads: true
@@ -48,4 +48,4 @@ repository:
   has_wiki: false
   name: "listless"
   private: false
-  topics: "php, template, goats"
+  topics: "php, email, mailing-list, listless"
