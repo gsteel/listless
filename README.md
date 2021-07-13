@@ -8,6 +8,11 @@
 [![Latest Stable Version](https://poser.pugx.org/gsteel/listless/v/stable)](https://packagist.org/packages/gsteel/listless)
 [![Total Downloads](https://poser.pugx.org/gsteel/listless/downloads)](https://packagist.org/packages/gsteel/listless)
 
+> ## Listless
+> _adjective_
+>
+> (of a person or their manner) lacking energy or enthusiasm.
+
 ## Introduction & Motivation
 
 The purpose of this library is to provide a simple and stable api with which to get email addresses on and off of third party mailing list platforms for your app so that you, and I can spend less time writing abstractions to iron out the disparities between the myriad mailing list operators out there.
