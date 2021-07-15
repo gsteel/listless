@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GSteel\Listless;
 
-use GSteel\Listless\Exception\InvalidArgument;
+use GSteel\Listless\Exception\AssertionFailed;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 final class Assert extends WebmozartAssert
@@ -17,6 +17,6 @@ final class Assert extends WebmozartAssert
      */
     protected static function reportInvalidArgument($message): void
     {
-        throw new InvalidArgument($message);
+        throw new AssertionFailed($message);
     }
 }

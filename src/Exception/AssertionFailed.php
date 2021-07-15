@@ -6,6 +6,6 @@ namespace GSteel\Listless\Exception;
 
 use InvalidArgumentException;
 
-final class InvalidArgument extends InvalidArgumentException implements Exception
+final class AssertionFailed extends InvalidArgumentException implements Exception
 {
 }

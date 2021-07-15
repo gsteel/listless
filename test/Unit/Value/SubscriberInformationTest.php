@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Test\Unit\Value;
 
-use GSteel\Listless\Exception\InvalidArgument;
+use GSteel\Listless\Exception\AssertionFailed;
 use GSteel\Listless\Value\SubscriberInformation;
 use PHPUnit\Framework\TestCase;
 use stdClass;
@@ -19,7 +19,7 @@ class SubscriberInformationTest extends TestCase
      */
     public function nonScalarValuesInTheConstructorShouldBeExceptional(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         SubscriberInformation::fromArray([new stdClass()]);
     }
 
@@ -72,7 +72,7 @@ class SubscriberInformationTest extends TestCase
      */
     public function nonScalarValuesInSetShouldBeExceptional(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         SubscriberInformation::fromArray([])->set('foo', new stdClass());
     }
 
@@ -112,7 +112,7 @@ class SubscriberInformationTest extends TestCase
      */
     public function itShouldBeExceptionalToProvideAnArrayWithoutStringsForTopLevelItems(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         SubscriberInformation::fromArray(['foo', 'bar']);
     }
 

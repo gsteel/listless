@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Test\Unit\Value;
 
-use GSteel\Listless\Exception\InvalidArgument;
+use GSteel\Listless\Exception\AssertionFailed;
 use GSteel\Listless\Value\ParameterMapper;
 use GSteel\Listless\Value\SubscriberInformation;
 use PHPUnit\Framework\TestCase;
@@ -35,7 +35,7 @@ class ParameterMapperTest extends TestCase
      */
     public function mappingKeysMustBeStrings(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         new ParameterMapper([0 => 'foo']);
     }
 
@@ -45,7 +45,7 @@ class ParameterMapperTest extends TestCase
      */
     public function mappingValuesMustBeStrings(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         new ParameterMapper(['foo' => 0]);
     }
 

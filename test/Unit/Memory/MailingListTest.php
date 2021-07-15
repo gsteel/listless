@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Test\Unit\Memory;
 
-use GSteel\Listless\Exception\InvalidArgument;
+use GSteel\Listless\Exception\AssertionFailed;
 use GSteel\Listless\Memory\MailingList;
 use GSteel\Listless\Test\Stub\CaseSensitiveEmail;
 use GSteel\Listless\Value\EmailAddress;
@@ -30,7 +30,7 @@ class MailingListTest extends TestCase
 
     public function testListIdMismatchInSubscribe(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         $this->list->subscribe(
             EmailAddress::fromString('me@example.com'),
             ListId::fromString('foo')

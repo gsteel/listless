@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GSteel\Listless\Test\Unit\Value;
 
-use GSteel\Listless\Exception\InvalidArgument;
+use GSteel\Listless\Exception\AssertionFailed;
 use GSteel\Listless\Test\Stub\CaseSensitiveEmail;
 use GSteel\Listless\Value\EmailAddress;
 use PHPUnit\Framework\TestCase;
@@ -13,13 +13,13 @@ class EmailAddressTest extends TestCase
 {
     public function testAnInvalidAddressIsExceptional(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         EmailAddress::fromString('foo');
     }
 
     public function testAnEmptyDisplayNameIsExceptional(): void
     {
-        $this->expectException(InvalidArgument::class);
+        $this->expectException(AssertionFailed::class);
         EmailAddress::fromString('foo@example.com', '');
     }
 
