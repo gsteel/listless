@@ -1,24 +1,23 @@
 {
     "name": "gsteel/listless",
-    "type": "library",
     "description": "Common mailing list contracts",
-    "keywords": [],
-    "homepage": "https://github.com/gsteel/listless",
     "license": "MIT",
+    "type": "library",
+    "keywords": [],
     "authors": [
         {
             "name": "George Steel",
             "email": "george@net-glue.co.uk"
         }
     ],
+    "homepage": "https://github.com/gsteel/listless",
     "require": {
-        "php": "^7.4 || ~8.0",
+        "php": "^7.4 || ~8.0 || ~8.1",
         "ext-json": "*",
         "symfony/polyfill-php80": "^1.23",
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
-        "captainhook/captainhook": "^5.10",
         "doctrine/coding-standard": "^9.0",
         "ergebnis/composer-normalize": "^2.15",
         "infection/infection": "^0",
@@ -26,15 +25,6 @@
         "psalm/plugin-phpunit": "^0.16.1",
         "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^4.8"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "composer-normalize": {
-            "indent-size": 4,
-            "indent-style": "space"
-        }
     },
     "autoload": {
         "psr-4": {
@@ -44,8 +34,21 @@
     "autoload-dev": {
         "psr-4": {
             "GSteel\\Listless\\Test\\": "test",
-            "GSteel\\Listless\\Test\\Unit\\": "test/Unit",
-            "GSteel\\Listless\\Test\\Integration\\": "test/Integration"
+            "GSteel\\Listless\\Test\\Unit\\": "test/Unit"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "infection/extension-installer": true,
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
         }
     },
     "scripts": {
