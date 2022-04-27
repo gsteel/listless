@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless;
+namespace ListInterop;
 
-use GSteel\Listless\Exception\JsonError;
 use JsonException;
+use ListInterop\Exception\JsonError;
 
 use function json_decode;
 use function json_encode;

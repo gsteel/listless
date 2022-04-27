@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Value;
+namespace ListInterop\Test\Unit\Value;
 
-use GSteel\Listless\Exception\AssertionFailed;
-use GSteel\Listless\Test\Stub\CaseSensitiveEmail;
-use GSteel\Listless\Value\EmailAddress;
+use ListInterop\Exception\AssertionFailed;
+use ListInterop\Test\Stub\CaseSensitiveEmail;
+use ListInterop\Value\EmailAddress;
 use PHPUnit\Framework\TestCase;
 
 class EmailAddressTest extends TestCase

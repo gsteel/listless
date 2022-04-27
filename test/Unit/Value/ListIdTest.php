@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Value;
+namespace ListInterop\Test\Unit\Value;
 
-use GSteel\Listless\Exception\AssertionFailed;
-use GSteel\Listless\Value\ListId;
+use ListInterop\Exception\AssertionFailed;
+use ListInterop\Value\ListId;
 use PHPUnit\Framework\TestCase;
 
 class ListIdTest extends TestCase

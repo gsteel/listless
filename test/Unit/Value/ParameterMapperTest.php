@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Value;
+namespace ListInterop\Test\Unit\Value;
 
-use GSteel\Listless\Exception\AssertionFailed;
-use GSteel\Listless\Value\ParameterMapper;
-use GSteel\Listless\Value\SubscriberInformation;
+use ListInterop\Exception\AssertionFailed;
+use ListInterop\Value\ParameterMapper;
+use ListInterop\Value\SubscriberInformation;
 use PHPUnit\Framework\TestCase;
 
 class ParameterMapperTest extends TestCase

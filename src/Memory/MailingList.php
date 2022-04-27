@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Memory;
+namespace ListInterop\Memory;
 
-use GSteel\Listless\Action\IsSubscribed;
-use GSteel\Listless\Action\Subscribe;
-use GSteel\Listless\Action\Unsubscribe;
-use GSteel\Listless\Assert;
-use GSteel\Listless\EmailAddress;
-use GSteel\Listless\ListId;
-use GSteel\Listless\MailingList as MailingListContract;
-use GSteel\Listless\SubscriberInformation;
-use GSteel\Listless\SubscriptionResult as ResultContract;
-use GSteel\Listless\Value\SubscriptionResult;
+use ListInterop\Action\IsSubscribed;
+use ListInterop\Action\Subscribe;
+use ListInterop\Action\Unsubscribe;
+use ListInterop\Assert;
+use ListInterop\EmailAddress;
+use ListInterop\ListId;
+use ListInterop\MailingList as MailingListContract;
+use ListInterop\SubscriberInformation;
+use ListInterop\SubscriptionResult as ResultContract;
+use ListInterop\Value\SubscriptionResult;
 
 use function array_key_exists;
 use function strtolower;

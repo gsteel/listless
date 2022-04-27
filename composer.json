@@ -1,5 +1,5 @@
 {
-    "name": "gsteel/listless",
+    "name": "list-interop/listless",
     "description": "Common mailing list contracts",
     "license": "MIT",
     "type": "library",
@@ -10,7 +10,7 @@
             "email": "george@net-glue.co.uk"
         }
     ],
-    "homepage": "https://github.com/gsteel/listless",
+    "homepage": "https://github.com/list-interop/listless",
     "require": {
         "php": "^7.4 || ~8.0 || ~8.1",
         "ext-json": "*",
@@ -29,13 +29,13 @@
     },
     "autoload": {
         "psr-4": {
-            "GSteel\\Listless\\": "src/"
+            "ListInterop\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GSteel\\Listless\\Test\\": "test",
-            "GSteel\\Listless\\Test\\Unit\\": "test/Unit"
+            "ListInterop\\Test\\": "test",
+            "ListInterop\\Test\\Unit\\": "test/Unit"
         }
     },
     "config": {
