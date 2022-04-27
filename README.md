@@ -1,12 +1,12 @@
 # Listless Contracts and Common Values
 
-[![Build Status](https://github.com/gsteel/listless/workflows/Continuous%20Integration/badge.svg)](https://github.com/gsteel/listless/actions?query=workflow%3A"Continuous+Integration")
+[![Build Status](https://github.com/list-interop/listless/workflows/Continuous%20Integration/badge.svg)](https://github.com/list-interop/listless/actions?query=workflow%3A"Continuous+Integration")
 
-[![codecov](https://codecov.io/gh/gsteel/listless/branch/main/graph/badge.svg)](https://codecov.io/gh/gsteel/listless)
-[![Psalm Type Coverage](https://shepherd.dev/github/gsteel/listless/coverage.svg)](https://shepherd.dev/github/gsteel/listless)
+[![codecov](https://codecov.io/gh/list-interop/listless/branch/main/graph/badge.svg)](https://codecov.io/gh/list-interop/listless)
+[![Psalm Type Coverage](https://shepherd.dev/github/list-interop/listless/coverage.svg)](https://shepherd.dev/github/list-interop/listless)
 
-[![Latest Stable Version](https://poser.pugx.org/gsteel/listless/v/stable)](https://packagist.org/packages/gsteel/listless)
-[![Total Downloads](https://poser.pugx.org/gsteel/listless/downloads)](https://packagist.org/packages/gsteel/listless)
+[![Latest Stable Version](https://poser.pugx.org/list-interop/listless/v/stable)](https://packagist.org/packages/list-interop/listless)
+[![Total Downloads](https://poser.pugx.org/list-interop/listless/downloads)](https://packagist.org/packages/list-interop/listless)
 
 > ## Listless
 > _adjective_
@@ -24,11 +24,11 @@ I'm also using this collection of projects as a learning exercise to increase my
 As currently unstable wip, you'll need to
 
 ```shell
-composer install gsteel/listless dev-main
+composer install list-interop/listless dev-main
 ```
 
 These contracts aren't going to get you far, so you'll want an implementation. There's only 1 in the works right now:
-[Email Octopus](https://github.com/gsteel/listless-octopus) … but, the plan is to at least get MailChimp running and possibly something home-grown.
+[Email Octopus](https://github.com/list-interop/listless-octopus) … but, the plan is to at least get MailChimp running and possibly something home-grown.
 
 If you're interested, dive in with the pull requests.
 
