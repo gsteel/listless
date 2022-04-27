@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Exception;
+namespace ListInterop\Exception;
 
 use JsonException;
 use RuntimeException;

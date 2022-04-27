@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Value;
+namespace ListInterop\Value;
 
-use GSteel\Listless\SubscriptionResult as Result;
+use ListInterop\SubscriptionResult as Result;
 
 /**
  * @psalm-immutable

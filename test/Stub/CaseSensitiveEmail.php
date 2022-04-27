@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Stub;
+namespace ListInterop\Test\Stub;
 
-use GSteel\Listless\Assert;
-use GSteel\Listless\EmailAddress;
+use ListInterop\Assert;
+use ListInterop\EmailAddress;
 
 use function strtolower;
 

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Exception;
+namespace ListInterop\Test\Unit\Exception;
 
-use GSteel\Listless\Exception\BadMethodCall;
-use GSteel\Listless\Exception\JsonError;
-use GSteel\Listless\Json;
+use ListInterop\Exception\BadMethodCall;
+use ListInterop\Exception\JsonError;
+use ListInterop\Json;
 use PHPUnit\Framework\TestCase;
 
 class JsonErrorTest extends TestCase

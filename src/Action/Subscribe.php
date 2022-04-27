@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Action;
+namespace ListInterop\Action;
 
-use GSteel\Listless\EmailAddress;
-use GSteel\Listless\Exception\Exception;
-use GSteel\Listless\ListId;
-use GSteel\Listless\SubscriberInformation;
-use GSteel\Listless\SubscriptionResult;
+use ListInterop\EmailAddress;
+use ListInterop\Exception\Exception;
+use ListInterop\ListId;
+use ListInterop\SubscriberInformation;
+use ListInterop\SubscriptionResult;
 
 interface Subscribe
 {

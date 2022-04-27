@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless;
+namespace ListInterop;
 
-use GSteel\Listless\Exception\AssertionFailed;
+use ListInterop\Exception\AssertionFailed;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 final class Assert extends WebmozartAssert

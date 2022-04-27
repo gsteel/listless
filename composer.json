@@ -29,13 +29,13 @@
     },
     "autoload": {
         "psr-4": {
-            "GSteel\\Listless\\": "src/"
+            "ListInterop\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GSteel\\Listless\\Test\\": "test",
-            "GSteel\\Listless\\Test\\Unit\\": "test/Unit"
+            "ListInterop\\Test\\": "test",
+            "ListInterop\\Test\\Unit\\": "test/Unit"
         }
     },
     "config": {

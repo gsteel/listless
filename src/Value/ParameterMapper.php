@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Value;
+namespace ListInterop\Value;
 
-use GSteel\Listless\Assert;
-use GSteel\Listless\ParameterMapping;
-use GSteel\Listless\SubscriberInformation;
-use GSteel\Listless\Value\SubscriberInformation as Parameters;
+use ListInterop\Assert;
+use ListInterop\ParameterMapping;
+use ListInterop\SubscriberInformation;
+use ListInterop\Value\SubscriberInformation as Parameters;
 
 use function array_flip;
 

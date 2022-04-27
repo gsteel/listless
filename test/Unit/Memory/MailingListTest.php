@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Memory;
+namespace ListInterop\Test\Unit\Memory;
 
-use GSteel\Listless\Exception\AssertionFailed;
-use GSteel\Listless\Memory\MailingList;
-use GSteel\Listless\Test\Stub\CaseSensitiveEmail;
-use GSteel\Listless\Value\EmailAddress;
-use GSteel\Listless\Value\ListId;
+use ListInterop\Exception\AssertionFailed;
+use ListInterop\Memory\MailingList;
+use ListInterop\Test\Stub\CaseSensitiveEmail;
+use ListInterop\Value\EmailAddress;
+use ListInterop\Value\ListId;
 use PHPUnit\Framework\TestCase;
 
 class MailingListTest extends TestCase

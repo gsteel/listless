@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Action;
+namespace ListInterop\Action;
 
-use GSteel\Listless\EmailAddress;
-use GSteel\Listless\ListId;
+use ListInterop\EmailAddress;
+use ListInterop\ListId;
 
 interface IsSubscribed
 {

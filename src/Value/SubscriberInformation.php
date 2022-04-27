@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Value;
+namespace ListInterop\Value;
 
-use GSteel\Listless\Assert;
-use GSteel\Listless\SubscriberInformation as SubscriberMeta;
+use ListInterop\Assert;
+use ListInterop\SubscriberInformation as SubscriberMeta;
 
 use function array_keys;
 use function is_iterable;

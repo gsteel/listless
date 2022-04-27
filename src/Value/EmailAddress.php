@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Value;
+namespace ListInterop\Value;
 
-use GSteel\Listless\Assert;
-use GSteel\Listless\EmailAddress as EmailAddressContract;
+use ListInterop\Assert;
+use ListInterop\EmailAddress as EmailAddressContract;
 
 use function strtolower;
 

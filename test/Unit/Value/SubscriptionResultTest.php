@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit\Value;
+namespace ListInterop\Test\Unit\Value;
 
-use GSteel\Listless\SubscriptionResult as Result;
-use GSteel\Listless\Value\SubscriptionResult;
+use ListInterop\SubscriptionResult as Result;
+use ListInterop\Value\SubscriptionResult;
 use PHPUnit\Framework\TestCase;
 
 class SubscriptionResultTest extends TestCase

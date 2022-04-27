@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Test\Unit;
+namespace ListInterop\Test\Unit;
 
-use GSteel\Listless\Exception\AssertionFailed;
-use GSteel\Listless\Exception\JsonError;
-use GSteel\Listless\Json;
+use ListInterop\Exception\AssertionFailed;
+use ListInterop\Exception\JsonError;
+use ListInterop\Json;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 

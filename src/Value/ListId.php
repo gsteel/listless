@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GSteel\Listless\Value;
+namespace ListInterop\Value;
 
-use GSteel\Listless\Assert;
-use GSteel\Listless\ListId as ListIdContract;
+use ListInterop\Assert;
+use ListInterop\ListId as ListIdContract;
 
 /**
  * @psalm-immutable
